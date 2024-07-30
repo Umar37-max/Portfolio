@@ -438,29 +438,20 @@ section{
 }
 @keyframes animate-path2{
     100%{
-        stroke-dashoffset: 175;;
+        stroke-dashoffset: 125;;
     }
 }
 @keyframes animate-path3{
     100%{
-        stroke-dashoffset: 125;;
+        stroke-dashoffset: 79;;
     }
 }
 @keyframes animate-path4{
     100%{
-        stroke-dashoffset: 75;;
+        stroke-dashoffset: 55;;
     }
 }
-.radial-bar .percentage{
-    position: absolute;
-    top:50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 17px;
-    font-weight: 500;
-    animation: showText 0.5s 1s linear forwards;
-    opacity: 0;
-}
+
 .radial-bar .text{
     width: 100%;
     position: absolute;
@@ -468,12 +459,24 @@ section{
     left: 50%;
     bottom: -5px;
     transform: translateX(-50px);
-    font-size: 17px;
+    font-size: 20px;
     font-weight: 500;
     animation: showText 0.5s 1s linear forwards;
     opacity: 0;
 }
 
+
+.radial-bars {
+    position: relative;
+
+}
+
+.percentage {
+    position: absolute;
+    font-size: 20px;
+    color: white; /* или другой цвет по вашему выбору */
+    padding: 95px; /* добавляет отступы вокруг текста */
+}
 
 
 
