@@ -1,15 +1,13 @@
-# views.py
 from django.core.mail import send_mail
-from django.http import HttpResponse
+from django.http import JsonResponse
 from django.shortcuts import render
-from django.core.mail import EmailMessage
 from django.conf import settings
 
 def send_message(request):
     if request.method == 'POST':
         name = request.POST.get('name')
         from_email = request.POST.get('from_email')
-        subject = request.POST.get('subject')
+        subject = request.POST.get('subject', 'No Subject')  # Добавлен дефолтный subject
         message = request.POST.get('message')
         recipient_list = ['ramz1230777@gmail.com']  # Замените на нужный адрес
 
@@ -21,12 +19,11 @@ def send_message(request):
                 recipient_list,
                 fail_silently=False,
             )
-            return HttpResponse('Email sent successfully!')
+            return JsonResponse({'success': True, 'message': 'Email sent successfully!'})
         except Exception as e:
-            return HttpResponse(f'Failed to send email: {str(e)}')
+            return JsonResponse({'success': False, 'message': f'Failed to send email: {str(e)}'}, status=500)
 
-    return render(request, 'myapp/contact.html')
-
+    return JsonResponse({'success': False, 'message': 'Invalid request method'}, status=400)
 
 def index(request):
     return render(request, 'myapp/index.html')
